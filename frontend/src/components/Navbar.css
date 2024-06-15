@@ -1,0 +1,15 @@
+.nav{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 300%;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
