@@ -1,0 +1,46 @@
+.signupform{
+    font-size: 200%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin: 15px;
+}
+
+.signupformelements {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto Mono', monospace;
+    padding: 0px 30%;
+}
+
+.signupitem{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 5px;
+}
+
+label{
+    margin: 3px;
+    padding: 5px;
+}
+
+input{
+    padding: 5px;
+}
+
+.signupformelements button{
+    padding: 10px;
+    margin: auto;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.7s ease, color 0.3s ease;
+}
+
+.signupformelements button:hover {
+    background-color: rgb(82, 82, 82); /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
