@@ -14,7 +14,7 @@ export default function SignUpPage() {
     }
     async function runSignup(){
         try {
-            const response = await fetch('/api/signup', {
+            const response = await fetch('https://unsolved-vnfg.vercel.app/signup', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

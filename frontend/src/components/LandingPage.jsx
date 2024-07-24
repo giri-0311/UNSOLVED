@@ -15,7 +15,7 @@ export default function LandingPage() {
 
   async function addQuestion() {
     try {
-      const response = await fetch("/api/addQuestion", {
+      const response = await fetch("https://unsolved-vnfg.vercel.app/addQuestion", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export default function LandingPage() {
 
   async function getQuestions() {
     try {
-      const response = await fetch("/api/getQuestions", {
+      const response = await fetch("https://unsolved-vnfg.vercel.app/getQuestions", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export default function LandingPage() {
   async function markAsDone(id) {
     try {
       const response = await fetch(
-        `/api/deleteQuestion/${id}`,
+        `https://unsolved-vnfg.vercel.app/deleteQuestion/${id}`,
         {
           method: "GET",
           headers: {
