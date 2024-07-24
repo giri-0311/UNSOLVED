@@ -13,7 +13,7 @@ export default function SignInPage() {
       }
     async function runSignup(){
         try {
-            const response = await fetch('https://unsolved-vnfg.vercel.app//signin', {
+            const response = await fetch('https://unsolved-vnfg.vercel.app/signin', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
