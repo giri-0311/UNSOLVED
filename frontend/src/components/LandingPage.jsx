@@ -56,6 +56,22 @@ export default function LandingPage() {
     }
   }
 
+  async function getQuestionswithFilter(filter) {
+    try {
+      const response = await fetch("https://unsolved-vnfg.vercel.app/getQuestions/"+filter, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      const result = await response.json();
+      setProblems(result.questions);
+    } catch (error) {
+      toast.error(error);
+    }
+  }
+
   if(!userToken){
     return <Navigate to="/signup" replace={true} />
   }
@@ -140,6 +156,12 @@ export default function LandingPage() {
           </div>
           <button onClick={addQuestion}>Submit</button>
         </div>
+      </div>
+      <div className="filters">
+        <button onClick={()=>{getQuestionswithFilter("leetcode")}}>Leetcode</button>
+        <button onClick={()=>{getQuestionswithFilter("atcoder")}}>AtCoder</button>
+        <button onClick={()=>{getQuestionswithFilter("codeforces")}}>Codeforces</button>
+        <button onClick={()=>{getQuestionswithFilter("wishlist")}}>WishList</button>
       </div>
       <div className="problemslist">
         {problems.length > 0 ? (

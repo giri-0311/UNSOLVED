@@ -116,3 +116,17 @@ label{
     transition: background-color 0.7s ease, color 0.3s ease;
 }
 
+.filters{
+    display: flex;
+    justify-content: center;
+}
+
+.filters button{
+    padding: 10px;
+    margin: 10px;
+    margin-top: 20px;
+    font-weight: medium;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.7s ease, color 0.3s ease;
+}

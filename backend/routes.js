@@ -165,6 +165,23 @@ router.get("/getQuestions",isUserSigned, async (req,res)=>{
     }
 })
 
+router.get("/getQuestions/:filter", isUserSigned, async (req, res) => {
+  const userid = req.user._id;
+  const filter = req.params.filter;
+  try {
+    const questions = await Question.find({ byuser: userid, type: filter });
+    res.status(200).json({
+      message: "Questions appear for this user",
+      questions
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Internal Server Error (Database error)',
+      error: error.message
+    });
+  }
+});
+
 router.get("/deleteQuestion/:id",isUserSigned, async(req,res)=>{
     const id = req.params.id;
     const userid = req.user._id;
