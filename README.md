@@ -9,3 +9,7 @@ A web application to store all the unsolved questions that you want to try later
 - **Context API**: Manage state efficiently with React Context API.
 - **Data Validation**: Ensure data integrity with Zod.
 - **Express Backend**: Handle API requests and data storage.
+
+  ## Deployment :
+  This project is deployed seperately as frontend and backend .
+  You can check the web app here  : https://unsolved-79k7.vercel.app/
