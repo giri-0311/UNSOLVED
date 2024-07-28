@@ -31,6 +31,9 @@ export default function LandingPage() {
       if(result.message==="Question created successfully"){
         toast.success(result.message);
         getQuestions();
+        setType("codeforces");
+        setQuestion("");
+        setLink("");
       }
       else{
         toast.error(result.message);
