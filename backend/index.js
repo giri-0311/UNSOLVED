@@ -11,6 +11,7 @@ mongoose.connect(process.env.DATABASE_URL);
 
 app.use(express.json());
 app.use(cors());
+  
 app.use('/', routes);
 
 app.listen(3000, () => {

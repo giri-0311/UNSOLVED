@@ -7,6 +7,43 @@ const {userexists} = require("./middlewares/userexist.js")
 const jwt = require("jsonwebtoken")
 const {isUserSigned} = require("./middlewares/isusersigned.js")
 
+const client_id = process.env.client_id;
+const redirect_uri =  process.env.redirect_uri;
+const authorization_endpoint = process.env.authorization_endpoint;
+
+router.get('/loginwithgoogle', (req, res) => {
+  const authUrl = `${authorization_endpoint}?response_type=code&client_id=${client_id}&redirect_uri=${encodeURIComponent(redirect_uri)}`;
+  res.redirect(authUrl);
+});
+
+router.get('/callback', async (req, res) => {
+  const authorization_code = req.query.code;
+  
+  if (!authorization_code) {
+    return res.status(400).send('Authorization code is missing');
+  }
+
+  const token_endpoint = 'https://authorization-server.com/token';
+  
+  try {
+    const response = await axios.post(token_endpoint, {
+      grant_type: 'authorization_code',
+      code: authorization_code,
+      redirect_uri: redirect_uri,
+      client_id: client_id,
+      client_secret: 'your-client-secret'
+    });
+    
+    const access_token = response.data.access_token;
+    res.send(`Access token: ${access_token}`);
+    
+  } catch (error) {
+    console.error('Error exchanging code for token:', error);
+    res.status(500).send('Error exchanging code for token');
+  }
+});
+
+
 
 function arePasswordsEqual(password1, password2) {
     if (password1.length !== password2.length) {
