@@ -4,7 +4,7 @@ import leetcodeImage from "./leetcode.png";
 import { ToastContainer, toast } from 'react-toastify';
 import codeforcesImage from "./codeforces.png";
 import { useAuth } from "../context/AuthContext.jsx";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
   const {userToken,setUserToken} = useAuth();
@@ -12,6 +12,7 @@ export default function LandingPage() {
   const [question, setQuestion] = useState("");
   const [link, setLink] = useState("");
   const [problems, setProblems] = useState([]);
+  const navigate = useNavigate();
 
   async function addQuestion() {
     try {
@@ -57,6 +58,12 @@ export default function LandingPage() {
     } catch (error) {
       toast.error(error);
     }
+  }
+
+  function logoutuser(){
+    localStorage.removeItem("token");
+    setUserToken(null)
+    navigate('/signup');
   }
 
   async function getQuestionswithFilter(filter) {
@@ -116,6 +123,7 @@ export default function LandingPage() {
           TRY AGAIN LATER
         </div>
         <div className="formelements roboto-mono">
+        <button onClick={()=>{logoutuser()}}>Logout</button>
           <div className="item">
             <label htmlFor="platforms">Choose a platform:</label>
             <select
